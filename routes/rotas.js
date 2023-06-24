@@ -15,7 +15,7 @@ rotas
 
 rotas
   .route("/publicacoes/:codigo")
-  .get(PublicacoesController.getPublicacaoPorCodigo)
+  .get(verificaJWT, PublicacoesController.getPublicacaoPorCodigo)
   .delete(verificaJWT, PublicacoesController.deletePublicacao);
 
 rotas.route("/login").post(login);
