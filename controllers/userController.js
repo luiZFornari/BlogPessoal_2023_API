@@ -1,4 +1,4 @@
-const { addUserDB } = require("../useCases/userUseCases");
+const { addUserDB, getUserPorCodigoDB } = require("../useCases/userUseCases");
 
 const addUser = async (request, response) => {
   try {
@@ -16,4 +16,15 @@ const addUser = async (request, response) => {
   }
 };
 
-module.exports = { addUser };
+const getUser = async (request, response) => {
+  await getUserPorCodigoDB(parseInt(request.params.codigo))
+    .then((data) => response.status(200).json(data))
+    .catch((err) =>
+      response.status(400).json({
+        status: "error",
+        message: err,
+      })
+    );
+};
+
+module.exports = { addUser, getUser };

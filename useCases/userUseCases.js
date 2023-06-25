@@ -16,4 +16,17 @@ const addUserDB = async (body) => {
   }
 };
 
-module.exports = { addUserDB };
+const getUserPorCodigoDB = async (codigo) => {
+  try {
+    const results = await pool.query(
+      `Select * from usuario where codigo = $1`,
+      [codigo]
+    );
+    const user = results.rows[0];
+    return new User(user.codigo, user.usuario, user.email, user.senha);
+  } catch (err) {
+    throw "Nenhum usuario encontrado: " + err;
+  }
+};
+
+module.exports = { addUserDB, getUserPorCodigoDB };

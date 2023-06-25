@@ -36,4 +36,6 @@ rotas
 
 rotas.route("/usuario").post(UsuarioController.addUser);
 
+rotas.route("/usuario/:codigo").get(UsuarioController.getUser);
+
 module.exports = rotas;
