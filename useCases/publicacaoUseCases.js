@@ -73,6 +73,10 @@ const updatePublicacaoDB = async (body) => {
 
 const deletePublicacaoDB = async (codigo) => {
   try {
+    const resultsC = await pool.query(
+      `DELETE FROM comentario WHERE publicacao = $1`,
+      [codigo]
+    );
     const results = await pool.query(
       `DELETE FROM publicacao WHERE codigo = $1`,
       [codigo]

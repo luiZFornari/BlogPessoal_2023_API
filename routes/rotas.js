@@ -27,7 +27,7 @@ rotas
 
 rotas
   .route("/comentario/publicacao/:codigo")
-  .get(verificaJWT, ComentarioController.getComentarioPorPublicacao);
+  .get(ComentarioController.getComentarioPorPublicacao);
 
 rotas
   .route("/Comentario/:codigo")

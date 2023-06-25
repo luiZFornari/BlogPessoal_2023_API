@@ -13,7 +13,7 @@ const autenticaUsuarioDB = async (body) => {
       throw "Usuário ou tenha inválidos";
     }
     const usuario = results.rows[0];
-    return new Usuario(usuario.email, usuario.usuario);
+    return new Usuario(usuario.email, usuario.usuario, usuario.codigo);
   } catch (err) {
     throw "Erro ao autenticar o usuário: " + err;
   }
